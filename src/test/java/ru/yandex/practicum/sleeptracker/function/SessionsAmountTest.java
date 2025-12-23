@@ -21,8 +21,8 @@ public class SessionsAmountTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListOrNullPassed() {
-        int result = sessionsAmount.apply(List.of());
-        assertEquals(0, result);
+        String result = sessionsAmount.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class SessionsAmountTest {
                 new SleepingSession(LocalDateTime.now(), LocalDateTime.now(), SleepQuality.GOOD),
                 new SleepingSession(LocalDateTime.now(), LocalDateTime.now(), SleepQuality.GOOD));
 
-        int result = sessionsAmount.apply(sleepingSessions);
-        assertEquals(3, result);
+        String result = sessionsAmount.apply(sleepingSessions);
+        assertEquals("3", result);
     }
 }

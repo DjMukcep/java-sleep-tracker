@@ -21,8 +21,8 @@ public class MaxDurationSessionTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListPassed() {
-        long result = maxDurationSession.apply(List.of());
-        assertEquals(0, result);
+        String result = maxDurationSession.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class MaxDurationSessionTest {
                         LocalDateTime.of(2025, 12, 21, 8, 5),
                         LocalDateTime.of(2025, 12, 21, 8, 6), SleepQuality.BAD)
         );
-        long result = maxDurationSession.apply(sleepingSessions);
+        String result = maxDurationSession.apply(sleepingSessions);
 
-        assertEquals(3, result);
+        assertEquals("3", result);
     }
 }

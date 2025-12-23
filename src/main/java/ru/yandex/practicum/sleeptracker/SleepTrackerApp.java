@@ -16,13 +16,14 @@ import java.util.function.Function;
 public class SleepTrackerApp {
 
     private static final  DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
-    private static final List<Function<List<SleepingSession>, ? extends Number>> FUNCTIONS = List.of(
+    private static final List<Function<List<SleepingSession>, String>> FUNCTIONS = List.of(
             new SessionsAmount(),
             new MinDurationSession(),
             new MaxDurationSession(),
             new AverageDurationSession(),
             new BadSessionsAmount(),
-            new SleeplessNightsAmount()
+            new SleeplessNightsAmount(),
+            new UserClassification()
     );
     private static List<SleepingSession> sleepingSessions;
     private static Path path;
@@ -55,7 +56,6 @@ public class SleepTrackerApp {
         result = new SleepAnalysisResult();
         loadSleepingSessions();
         processFunctions();
-        processUserClassification();
     }
 
     private static void loadSleepingSessions() {
@@ -82,16 +82,12 @@ public class SleepTrackerApp {
         }
 
         if (sleepingSessions == null) {
-            System.err.println("Ошибка: список сонных сессий не проиницализирован");
+            System.err.println("Ошибка: список сонных сессий не проинициализирован");
             return;
         }
 
         FUNCTIONS.forEach(function ->
                 System.out.println(result.getMessage(function.apply(sleepingSessions)))
         );
-    }
-
-    private static void processUserClassification() {
-        System.out.println(result.getMessage(new UserClassification().apply(sleepingSessions)));
     }
 }

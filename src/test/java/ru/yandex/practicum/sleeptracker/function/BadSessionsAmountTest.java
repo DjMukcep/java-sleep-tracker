@@ -21,8 +21,8 @@ public class BadSessionsAmountTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListPassed() {
-        long result = badSessionsAmount.apply(List.of());
-        assertEquals(0, result);
+        String result = badSessionsAmount.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class BadSessionsAmountTest {
                         LocalDateTime.of(2025, 12, 21, 8, 5),
                         LocalDateTime.of(2025, 12, 21, 8, 6), SleepQuality.BAD)
         );
-        long result = badSessionsAmount.apply(sleepingSessions);
+        String result = badSessionsAmount.apply(sleepingSessions);
 
-        assertEquals(2, result);
+        assertEquals("2", result);
     }
 }

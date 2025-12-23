@@ -4,18 +4,18 @@ import java.util.List;
 
 public class SleepAnalysisResult {
 
-    private static int counter;
+    private int counter;
     private static final List<String> MESSAGES = List.of(
             "Общее количество сессий: ",
             "Минимальная продолжительность сессии в минутах: ",
-            "Максимальная продолжительнось сессии в минутах: ",
+            "Максимальная продолжительность сессии в минутах: ",
             "Средняя продолжительность сессии в минутах: ",
             "Количество сессий с низким качеством сна: ",
-            "Количество бессоных ночей: ",
+            "Количество бессонных ночей: ",
             "Пользователь классифицируется как: "
     );
 
-    public <T> String getMessage(T value) {
+    public String getMessage(String value) {
         return MESSAGES.get(counter++) + value;
     }
 }

@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class AverageDurationSession implements Function<List<SleepingSession>,Integer> {
+public class AverageDurationSession implements Function<List<SleepingSession>,String> {
     @Override
-    public Integer apply(List<SleepingSession> sessions) {
-        return  sessions.stream()
+    public String apply(List<SleepingSession> sessions) {
+        int result =  sessions.stream()
                 .map(s -> Duration.between(s.startTime(), s.endTime()))
                 .map(Duration::toMinutes)
                 .collect(Collectors.averagingInt(Long::intValue))
                 .intValue();
+        return String.valueOf(result);
     }
 }

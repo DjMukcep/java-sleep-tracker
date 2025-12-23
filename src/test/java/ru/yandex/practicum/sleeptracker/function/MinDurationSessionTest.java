@@ -21,8 +21,8 @@ public class MinDurationSessionTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListPassed() {
-        long result = minDurationSession.apply(List.of());
-        assertEquals(0, result);
+        String result = minDurationSession.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class MinDurationSessionTest {
                         LocalDateTime.of(2025, 12, 21, 8, 5),
                         LocalDateTime.of(2025, 12, 21, 8, 6), SleepQuality.BAD)
         );
-        long result = minDurationSession.apply(sleepingSessions);
+        String result = minDurationSession.apply(sleepingSessions);
 
-        assertEquals(1, result);
+        assertEquals("1", result);
     }
 }

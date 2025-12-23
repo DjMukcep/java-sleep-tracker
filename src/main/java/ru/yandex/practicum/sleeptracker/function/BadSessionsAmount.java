@@ -7,11 +7,12 @@ import java.util.List;
 import java.util.function.Function;
 
 
-public class BadSessionsAmount implements Function<List<SleepingSession>, Long> {
+public class BadSessionsAmount implements Function<List<SleepingSession>, String> {
     @Override
-    public Long apply(List<SleepingSession> sessions) {
-        return sessions.stream()
+    public String apply(List<SleepingSession> sessions) {
+        long result = sessions.stream()
                 .filter(s -> s.sleepQuality().equals(SleepQuality.BAD))
                 .count();
+        return String.valueOf(result);
     }
 }

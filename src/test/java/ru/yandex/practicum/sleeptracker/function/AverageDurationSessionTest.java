@@ -21,8 +21,8 @@ public class AverageDurationSessionTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListOrNullPassed() {
-        int result = averageDurationSession.apply(List.of());
-        assertEquals(0, result);
+        String result = averageDurationSession.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -38,8 +38,8 @@ public class AverageDurationSessionTest {
                         LocalDateTime.of(2025, 12, 21, 8, 5),
                         LocalDateTime.of(2025, 12, 21, 8, 6), SleepQuality.GOOD)
         );
-        int result = averageDurationSession.apply(sleepingSessions);
+        String result = averageDurationSession.apply(sleepingSessions);
 
-        assertEquals(2, result);
+        assertEquals("2", result);
     }
 }

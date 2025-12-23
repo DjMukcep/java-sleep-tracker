@@ -21,8 +21,8 @@ public class SleeplessNightsAmountTest {
 
     @Test
     void shouldReturnZeroWhenEmptyListPassed() {
-        long result = sleeplessNightsAmount.apply(List.of());
-        assertEquals(0, result);
+        String result = sleeplessNightsAmount.apply(List.of());
+        assertEquals("0", result);
     }
 
     @Test
@@ -41,9 +41,9 @@ public class SleeplessNightsAmountTest {
                         LocalDateTime.of(2025, 12, 25, 2, 0),
                         LocalDateTime.of(2025, 12, 25, 5, 0), SleepQuality.BAD)
         );
-        long result = sleeplessNightsAmount.apply(sleepingSessions);
+        String result = sleeplessNightsAmount.apply(sleepingSessions);
 
-        assertEquals(0, result);
+        assertEquals("0", result);
     }
 
     @Test
@@ -56,9 +56,9 @@ public class SleeplessNightsAmountTest {
                         LocalDateTime.of(2025, 12, 22, 6, 0),
                         LocalDateTime.of(2025, 12, 22, 11, 0), SleepQuality.BAD)
         );
-        long result = sleeplessNightsAmount.apply(sleepingSessions);
+        String result = sleeplessNightsAmount.apply(sleepingSessions);
 
-        assertEquals(1, result);
+        assertEquals("1", result);
     }
 
     @Test
@@ -71,8 +71,8 @@ public class SleeplessNightsAmountTest {
                         LocalDateTime.of(2025, 12, 23, 6, 0),
                         LocalDateTime.of(2025, 12, 23, 11, 0), SleepQuality.BAD)
         );
-        long result = sleeplessNightsAmount.apply(sleepingSessions);
+        String result = sleeplessNightsAmount.apply(sleepingSessions);
 
-        assertEquals(2, result);
+        assertEquals("2", result);
     }
 }

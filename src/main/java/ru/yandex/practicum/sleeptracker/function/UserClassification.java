@@ -22,16 +22,16 @@ public class UserClassification implements Function<List<SleepingSession>, Strin
                     LocalTime end = s.endTime().toLocalTime();
                     int startDay = s.startTime().toLocalDate().getDayOfMonth();
                     int endDay = s.endTime().toLocalDate().getDayOfMonth();
-                    boolean isNotSameDay = startDay != endDay;
+                    boolean notSameDay = startDay != endDay;
                     if ((start.isAfter(LocalTime.of(23, 0))
                             || start.isBefore(LocalTime.of(6, 0)))
                             && end.isAfter(LocalTime.of(9, 0))) {
                         return "сова";
                     } else if (start.isBefore(LocalTime.of(22, 0))
                             && end.isBefore(LocalTime.of(7, 0))
-                            && isNotSameDay) {
+                            && notSameDay) {
                         return "жаворонок";
-                    } else if (isNotSameDay) {
+                    } else if (notSameDay) {
                         return "голубь";
                     }
                     return "undefined";
